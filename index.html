@@ -14,6 +14,12 @@
 <meta property="og:title" content="Deepu Verma | BCA Student & Aspiring Data Analyst">
 <meta property="og:description" content="Spreadsheet projects, skills, certificates and learning journey toward a data analytics career.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://dipuvrma97-arch.github.io/">
+<meta property="og:image" content="https://dipuvrma97-arch.github.io/images/share-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dipuvrma97-arch.github.io/images/share-card.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233B82F6'/%3E%3Ctext x='32' y='42' font-size='28' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EDV%3C/text%3E%3C/svg%3E">
 <style>
 :root{--bg:#0A1428;--surface:#101D38;--accent:#D4AF37;--accent2:#E6C766;--text:#F8FAFC;--muted:#A9B4C8;--line:rgba(212,175,55,.18);--glass:rgba(16,29,56,.78);--r:14px;--safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px)}
@@ -137,6 +143,7 @@ main section:nth-of-type(even):not(.hero){background:linear-gradient(180deg,tran
 [data-theme=light] .links a.cta,[data-theme=light] .links a.cta.on,[data-theme=light] .links a.cta:hover{color:#fff}
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 14px 4px rgba(212,175,55,.45)}}
 .social{display:flex;gap:10px;margin-bottom:10px}.social a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:.2s}.social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}.social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.xl{display:flex;gap:14px;align-items:flex-start}.xl svg{width:36px;height:36px;flex:none;color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.xl h3{font-size:1.05rem;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -176,11 +183,12 @@ main section:nth-of-type(even):not(.hero){background:linear-gradient(180deg,tran
 <p class="lead">Tools I currently work with, grouped by purpose. More will be added as I learn them.</p>
 <div class="grid" id="skillGrid"></div>
 <div class="card info" id="learning" style="margin-top:16px"></div>
+<h3 class="grp">Excel features I use</h3><div class="grid" id="xlGrid"></div>
 </div></section>
 
 <section id="projects"><div class="wrap rv">
 <h2>Projects</h2>
-<p class="lead">Five Excel projects. All project files are in one shared Google Drive folder.</p>
+<p class="lead">Excel projects. All project files are in one shared Google Drive folder.</p>
 <div class="grid" id="projectGrid"></div>
 <div class="row" id="driveRow" style="margin-top:22px"></div>
 </div></section>
@@ -259,8 +267,8 @@ $("#skillGrid").innerHTML=SKILLS.map(g=>`<div class="card"><h3>${g.group}</h3><d
 
 /* projects */
 const dlg=$("#dlg");
-$("#projectGrid").innerHTML=PROJECTS.map((p,i)=>`<article class="card"><div class="ph"><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" loading="lazy" data-pi="${i}" tabindex="0" role="button"></div><span class="tag">${p.tools}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="row"><button class="btn ghost" data-p="${i}" type="button">View screenshot</button></div></article>`).join("");
-const showP=i=>{const p=PROJECTS[i];$("#dbody").innerHTML=`<h3 id="dt">${esc(p.title)}</h3><p class="note">${esc(p.desc)}</p><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}"><p class="note">Files are in my Google Drive folder.</p>`;dlg.showModal()};
+$("#projectGrid").innerHTML=PROJECTS.map((p,i)=>`<article class="card"><div class="ph"><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" loading="lazy" data-pi="${i}" tabindex="0" role="button"></div><span class="tag">${p.tools}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="row"><button class="btn ghost" data-p="${i}" type="button">View case study</button></div></article>`).join("");
+const showP=i=>{const p=PROJECTS[i],k=p.case||{};$("#dbody").innerHTML=`<h3 id="dt">${esc(p.title)}</h3><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" style="margin:10px 0"><dl>${[["What I built",k.what],["Why I built it",k.why],["Features and formulas used",k.used],["What I learned",k.learned]].filter(x=>x[1]).map(([a,b])=>`<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl><p class="note">The project files are in my Google Drive folder, linked below the projects.</p>`;dlg.showModal()};
 document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>showP(b.dataset.p));
 document.querySelectorAll("img[data-pi]").forEach(im=>{im.onclick=()=>showP(im.dataset.pi);im.onkeydown=e=>{if(e.key==="Enter")showP(im.dataset.pi)}});
 $("#driveRow").innerHTML=`<a class="btn" href="${DRIVE}" ${ext}>Open all projects on Google Drive</a>`;
@@ -334,6 +342,8 @@ $("#internGrid").innerHTML=`<article class="card"><span class="tag">${st}</span>
 const show=(t,src)=>{$("#dbody").innerHTML=`<h3 id="dt">${t}</h3><img src="${esc(src)}" alt="${t}">`;dlg.showModal()};
 $("#oBtn").onclick=()=>show("Internship offer letter",I.offerImg);if(I.completionImg)$("#cBtn").onclick=()=>show("Internship completion certificate",I.completionImg)})();
 (()=>{const pr=$("#progress"),tt=$("#totop");const upd=()=>{const h=document.documentElement.scrollHeight-innerHeight;pr.style.transform="scaleX("+(h>0?scrollY/h:0)+")";tt.classList.toggle("show",scrollY>600)};addEventListener("scroll",upd,{passive:true});upd();tt.onclick=()=>scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});const c=document.querySelector('.links a[href="#contact"]');if(c)c.classList.add("cta")})();
+const XI={formula:'<path d="M18 5H6l6 7-6 7h12"/>',format:'<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1" fill="currentColor" fill-opacity=".35"/>',filter:'<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>',check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'};
+$("#xlGrid").innerHTML=EXCEL_FEATURES.map(f=>`<article class="card xl"><svg viewBox="0 0 24 24" aria-hidden="true">${XI[f.icon]||""}</svg><div><h3>${esc(f.t)}</h3><p>${esc(f.d)}</p></div></article>`).join("");
 /* README (short)
  Photo: set SITE.photo to your image path. Resume: set SITE.resume to your PDF path.
  Projects: fill PROJECTS[].fields, img (screenshot), link. Certificates: set img/url in CERTS.
