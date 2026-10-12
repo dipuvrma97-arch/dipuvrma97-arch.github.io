@@ -144,6 +144,7 @@ main section:nth-of-type(even):not(.hero){background:linear-gradient(180deg,tran
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 14px 4px rgba(212,175,55,.45)}}
 .social{display:flex;gap:10px;margin-bottom:10px}.social a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:.2s}.social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}.social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .xl{display:flex;gap:14px;align-items:flex-start}.xl svg{width:36px;height:36px;flex:none;color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.xl h3{font-size:1.05rem;margin-bottom:4px}
+details.cs{margin-top:12px}details.cs summary{list-style:none;cursor:pointer;text-align:center;margin-top:0}details.cs summary::-webkit-details-marker{display:none}details.cs[open] summary{margin-bottom:12px}details.cs dl{margin:0}
 </style>
 </head>
 <body>
@@ -247,7 +248,7 @@ main section:nth-of-type(even):not(.hero){background:linear-gradient(180deg,tran
 <button id="totop" type="button" aria-label="Back to top">&#8593;</button>
 <dialog id="dlg" aria-labelledby="dt"><div id="dbody"></div><div class="row" style="margin-top:16px"><button class="btn ghost" id="dclose">Close</button></div></dialog>
 
-<script src="content.js"></script>
+<script src="content.js?v=7"></script>
 <script>
 
 
@@ -267,9 +268,9 @@ $("#skillGrid").innerHTML=SKILLS.map(g=>`<div class="card"><h3>${g.group}</h3><d
 
 /* projects */
 const dlg=$("#dlg");
-$("#projectGrid").innerHTML=PROJECTS.map((p,i)=>`<article class="card"><div class="ph"><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" loading="lazy" data-pi="${i}" tabindex="0" role="button"></div><span class="tag">${p.tools}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="row"><button class="btn ghost" data-p="${i}" type="button">View case study</button></div></article>`).join("");
-const showP=i=>{const p=PROJECTS[i],k=p.case||{};$("#dbody").innerHTML=`<h3 id="dt">${esc(p.title)}</h3><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" style="margin:10px 0"><dl>${[["What I built",k.what],["Why I built it",k.why],["Features and formulas used",k.used],["What I learned",k.learned]].filter(x=>x[1]).map(([a,b])=>`<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl><p class="note">The project files are in my Google Drive folder, linked below the projects.</p>`;dlg.showModal()};
-document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>showP(b.dataset.p));
+const caseDL=k=>{const L=[["What I built",k.what],["Why I built it",k.why],["Features and formulas used",k.used],["What I learned",k.learned]].filter(x=>x[1]);return L.length?`<dl>${L.map(([a,b])=>`<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>`:`<p class="note">Case study will be added soon.</p>`};
+$("#projectGrid").innerHTML=PROJECTS.map((p,i)=>`<article class="card"><div class="ph"><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" loading="lazy" data-pi="${i}" tabindex="0" role="button"></div><span class="tag">${p.tools}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><details class="cs"><summary class="btn ghost">View case study</summary>${caseDL(p.case||{})}</details></article>`).join("");
+const showP=i=>{const p=PROJECTS[i];$("#dbody").innerHTML=`<h3 id="dt">${esc(p.title)}</h3><img src="${esc(p.img)}" alt="Excel screenshot of ${esc(p.title)}" style="margin:10px 0">${caseDL(p.case||{})}<p class="note">The project files are in my Google Drive folder, linked below the projects.</p>`;dlg.showModal()};
 document.querySelectorAll("img[data-pi]").forEach(im=>{im.onclick=()=>showP(im.dataset.pi);im.onkeydown=e=>{if(e.key==="Enter")showP(im.dataset.pi)}});
 $("#driveRow").innerHTML=`<a class="btn" href="${DRIVE}" ${ext}>Open all projects on Google Drive</a>`;
 $("#dclose").onclick=()=>dlg.close();
