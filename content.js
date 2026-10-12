@@ -28,17 +28,17 @@ const PROJECTS=[
  {id:"p4",title:"Multi Criteria Data Filter Sort Summary Report",tools:"Excel",desc:"Property data (location, type, price, BHK, status, client) prepared for multi-criteria filtering, sorting and summary.",img:"images/proj-filter.jpg",case:{"what": "A property data sheet with 15 listings, showing location, property type, price, bedrooms, status (available or sold) and client name.", "why": "To find properties quickly by location, type, price or status, and to see which client bought which property.", "used": "Filter drop-downs on every column and sorting, combined to apply several criteria at the same time.", "learned": "How to filter and sort on more than one condition to answer questions from a data table."}},
  {id:"p5",title:"Data Cleaning",tools:"Excel",desc:"Raw contact data cleaned into separate name and valid email address columns.",img:"images/proj-cleaning.jpg",case:{"what": "A cleaning exercise on 13 raw contact records, where names and emails were mixed in one cell.", "why": "To turn messy contact text into separate, usable name and email columns.", "used": "Text formulas to separate the name and email parts and tidy how the names are written.", "learned": "Raw data usually needs cleaning before it can be analysed, and every cleaned result needs to be checked."}},
 ];
-const CERT_GROUPS=["Data Analytics Skills","Office and Design Tools","AI and AI Tools","Events and Participation"];
+const CERT_GROUPS=["Data Analytics Skills","Office and Design Tools","AI Skills and Tools","Events and Participation"];
 const CERTS=[
  {t:"Microsoft Excel Beginners To Advance",org:"SkillCourse",date:"26 August 2026",cat:"Data Analytics Skills",img:"images/cert-excel.jpg",url:"",id:"SC-4UFR3M6XRA"},
  {t:"30 Days Power BI Micro Course",org:"SkillCourse",date:"26 August 2026",cat:"Data Analytics Skills",img:"images/cert-powerbi.jpg",url:"",id:"SC-S8G3TEYZK0"},
  {t:"MS Word Complete Course: Basics to Advanced Features",org:"Cursa",date:"2 October 2026",cat:"Office and Design Tools",img:"images/cert-word.jpg",url:"",id:""},
  {t:"Canva Tool for Beginners",org:"Cursa",date:"2 October 2026",cat:"Office and Design Tools",img:"images/cert-canva.jpg",url:"",id:""},
- {t:"Prompt Engineering: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI and AI Tools",img:"images/cert-prompt-engineering.jpg",url:"",id:"GYN0000013714"},
- {t:"Claude: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI and AI Tools",img:"images/cert-claude.jpg",url:"",id:"GYN0000008336"},
- {t:"Google Gemini: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI and AI Tools",img:"images/cert-gemini.jpg",url:"",id:"GYN0000014783"},
- {t:"YUVA AI For ALL (Hindi)",org:"NIELIT • NCVET-recognised • NSQF Level 2",date:"23 June 2026",cat:"AI and AI Tools",img:"images/cert-yuva-ai.jpg",url:"",id:""},
- {t:"AI Tools & Claude Workshop",org:"be10X",date:"9 October 2026",cat:"AI and AI Tools",img:"images/cert-be10x.jpg",url:"",id:""},
+ {t:"Prompt Engineering: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI Skills and Tools",img:"images/cert-prompt-engineering.jpg",url:"",id:"GYN0000013714"},
+ {t:"Claude: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI Skills and Tools",img:"images/cert-claude.jpg",url:"",id:"GYN0000008336"},
+ {t:"Google Gemini: Beginner's Course",org:"Gyaan-E, powered by Physics Wallah",date:"",cat:"AI Skills and Tools",img:"images/cert-gemini.jpg",url:"",id:"GYN0000014783"},
+ {t:"YUVA AI For ALL (Hindi)",org:"NIELIT • NCVET-recognised • NSQF Level 2",date:"23 June 2026",cat:"AI Skills and Tools",img:"images/cert-yuva-ai.jpg",url:"",id:""},
+ {t:"AI Tools & Claude Workshop",org:"be10X",date:"9 October 2026",cat:"AI Skills and Tools",img:"images/cert-be10x.jpg",url:"",id:""},
  {t:"Viksit Bharat Young Leaders Dialogue (VBYLD) 2027 — Online Quiz Participation",org:"MY Bharat • Ministry of Youth Affairs & Sports",date:"11 September 2026",cat:"Events and Participation",img:"images/cert-vbyld.jpg",url:"",id:"",type:"Online quiz participation"},
 ];
 const ACH=[{t:"College fest — Treasure Trail game",meta:"Role: Coordinator",d:"Coordinated the Treasure Trail game at my college fest, with a focus on event coordination and participation."}];
