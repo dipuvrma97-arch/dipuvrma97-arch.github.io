@@ -144,7 +144,7 @@ main section:nth-of-type(even):not(.hero){background:linear-gradient(180deg,tran
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 14px 4px rgba(212,175,55,.45)}}
 .social{display:flex;gap:10px;margin-bottom:10px}.social a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--text);transition:.2s}.social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}.social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .xl{display:flex;gap:14px;align-items:flex-start}.xl svg{width:36px;height:36px;flex:none;color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.xl h3{font-size:1.05rem;margin-bottom:4px}
-details.cs{margin-top:12px}details.cs summary{list-style:none;cursor:pointer;text-align:center;margin-top:0}details.cs summary::-webkit-details-marker{display:none}details.cs[open] summary{margin-bottom:12px}details.cs dl{margin:0}
+details.cs{margin-top:12px}details.cs summary{list-style:none;cursor:pointer;text-align:center;margin-top:0}details.cs summary::-webkit-details-marker{display:none}details.cs[open] summary{margin-bottom:12px}details.cs dl{margin:0}#certGrid .grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}details.cs ul{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--muted);font-size:.93rem}details.cs details.cs{margin-top:14px}
 </style>
 </head>
 <body>
@@ -203,6 +203,12 @@ details.cs{margin-top:12px}details.cs summary{list-style:none;cursor:pointer;tex
 
 <section id="internship"><div class="wrap rv"><h2>Internship</h2><div class="grid" id="internGrid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"></div></div></section>
 
+<section id="visits"><div class="wrap rv">
+<h2>Industrial visits</h2>
+<p class="lead">College industrial visits and what I learned from them. Open a case study to read more.</p>
+<div class="grid" id="visitGrid" style="grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))"></div>
+</div></section>
+
 <section id="achievements"><div class="wrap rv">
 <h2>Achievements and activities</h2>
 <div class="tl" id="achList" style="margin-top:20px"></div>
@@ -248,14 +254,14 @@ details.cs{margin-top:12px}details.cs summary{list-style:none;cursor:pointer;tex
 <button id="totop" type="button" aria-label="Back to top">&#8593;</button>
 <dialog id="dlg" aria-labelledby="dt"><div id="dbody"></div><div class="row" style="margin-top:16px"><button class="btn ghost" id="dclose">Close</button></div></dialog>
 
-<script src="content.js?v=7"></script>
+<script src="content.js?v=8"></script>
 <script>
 
 
 const $=s=>document.querySelector(s),el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ext='target="_blank" rel="noopener noreferrer"';
-const NAV=["Home","About","Skills","Projects","Certificates","Internship","Achievements","Education","Resume","Contact"];
+const NAV=["Home","About","Skills","Projects","Certificates","Internship","Visits","Achievements","Education","Resume","Contact"];
 $("#links").innerHTML=NAV.map(n=>`<li><a href="#${n.toLowerCase()}">${n}</a></li>`).join("");
 $("#fnav").innerHTML=NAV.slice(1).map(n=>`<li><a href="#${n.toLowerCase()}">${n}</a></li>`).join("");
 $("#social").innerHTML=`<a class="btn ghost" href="${SITE.linkedin}" ${ext}>LinkedIn</a><a class="btn ghost" href="${SITE.github}" ${ext}>GitHub</a>${SITE.instagram?`<a class="btn ghost" href="${SITE.instagram}" ${ext}>Instagram</a>`:""}<a class="btn ghost" href="#contact">Contact me</a>`;
@@ -283,6 +289,10 @@ document.querySelectorAll("#certGrid img[data-i]").forEach(im=>{im.tabIndex=0;im
 /* timelines */
 const tl=(arr,id)=>$(id).innerHTML=arr.map(a=>`<div class="card" style="margin-bottom:14px"><h3>${a.t}</h3><span class="tag">${a.meta}</span><p>${a.d}</p></div>`).join("");
 tl(ACH,"#achList");tl(EDU,"#eduList");
+
+/* industrial visits */
+$("#visitGrid").innerHTML=VISITS.map((v,i)=>{const ci=v.cert?CERTS.findIndex(c=>c.t===v.cert):-1;return `<article class="card"><span class="tag">College industrial visit</span><h3>${esc(v.title)}</h3>${v.date?`<p class="note" style="margin-top:0">${esc(v.date)}</p>`:""}<p>${esc(v.desc)}</p>${ci>=0?`<div class="row" style="margin-top:12px"><button class="btn ghost" type="button" style="font:inherit" data-vc="${ci}">View certificate</button></div>`:""}<details class="cs"><summary class="btn ghost">View case study</summary><dl>${v.sections.map(([a,b])=>`<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl><details class="cs"><summary class="btn ghost">View learning outcomes</summary><ul>${v.outcomes.map(o=>`<li>${esc(o)}</li>`).join("")}</ul>${v.note?`<p class="note">${esc(v.note)}</p>`:""}</details></details></article>`}).join("");
+document.querySelectorAll("[data-vc]").forEach(b=>b.onclick=()=>{const c=CERTS[b.dataset.vc];$("#dbody").innerHTML=`<h3 id="dt">${esc(c.t)}</h3><p class="note">${esc(c.org)}</p><img src="${esc(c.img)}" alt="Certificate: ${esc(c.t)}">`;dlg.showModal()});
 
 /* resume */
 if(SITE.resumeFile){
