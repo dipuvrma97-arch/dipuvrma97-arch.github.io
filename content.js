@@ -194,14 +194,14 @@ const VISITS=[
  },
  {
   "id": "v4",
-  "title": "CodeSquad, Noida — Understanding the Data Analyst Role",
+  "title": "CodeSquadz, Noida — Understanding the Data Analyst Role",
   "date": "",
-  "desc": "A college industrial visit to CodeSquad, Noida, to learn what a Data Analyst does and how to prepare for the role.",
+  "desc": "A college industrial visit to CodeSquadz, Noida, to learn what a Data Analyst does and how to prepare for the role.",
   "cert": "",
   "sections": [
    [
     "Visit details",
-    "A college-organized industrial visit to CodeSquad, Noida. This was a learning visit."
+    "A college-organized industrial visit to CodeSquadz, Noida. This was a learning visit."
    ],
    [
     "Purpose",
