@@ -1,0 +1,130 @@
+{
+ "id": "./",
+ "name": "Deepu Verma | Portfolio App",
+ "short_name": "Deepu Verma",
+ "description": "Portfolio of Deepu Verma, BCA student and aspiring Data Analyst: projects, certificates, industrial visits, resume and contact.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "display_override": [
+  "standalone",
+  "minimal-ui"
+ ],
+ "orientation": "portrait",
+ "background_color": "#0A1428",
+ "theme_color": "#0A1428",
+ "lang": "en",
+ "categories": [
+  "education",
+  "portfolio",
+  "productivity"
+ ],
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "maskable"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Certificates",
+   "url": "./#/certificates",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Projects",
+   "url": "./#/work/projects",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Industrial visits",
+   "url": "./#/work/visits",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Resume",
+   "url": "./#/profile/resume",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Contact",
+   "url": "./#/contact",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ],
+ "screenshots": [
+  {
+   "src": "screenshots/home.jpg",
+   "sizes": "824x1780",
+   "type": "image/jpeg",
+   "form_factor": "narrow",
+   "label": "Home"
+  },
+  {
+   "src": "screenshots/certificates.jpg",
+   "sizes": "824x1780",
+   "type": "image/jpeg",
+   "form_factor": "narrow",
+   "label": "Certificates"
+  },
+  {
+   "src": "screenshots/projects.jpg",
+   "sizes": "824x1780",
+   "type": "image/jpeg",
+   "form_factor": "narrow",
+   "label": "Projects"
+  },
+  {
+   "src": "screenshots/visits.jpg",
+   "sizes": "824x1780",
+   "type": "image/jpeg",
+   "form_factor": "narrow",
+   "label": "Industrial visits"
+  }
+ ]
+}
